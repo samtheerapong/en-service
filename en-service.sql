@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 21, 2023 at 09:52 AM
+-- Generation Time: Jul 21, 2023 at 03:02 PM
 -- Server version: 5.7.39
--- PHP Version: 7.4.9
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -109,7 +109,7 @@ CREATE TABLE `auto_number` (
 --
 
 INSERT INTO `auto_number` (`group`, `number`, `optimistic_lock`, `update_time`) VALUES
-('RP202307-???', 19, 1, 1689933040);
+('RP202307-???', 25, 1, 1689950140);
 
 -- --------------------------------------------------------
 
@@ -726,9 +726,15 @@ CREATE TABLE `repair` (
 --
 
 INSERT INTO `repair` (`id`, `ticket_number`, `title`, `details`, `request_date`, `created_at`, `updated_at`, `created_by`, `updated_by`, `repair_priority_id`, `location`, `docs`, `repair_status_id`, `ref`) VALUES
-(17, 'RP202307-017', 'dasasdas', '', '2023-08-04 00:00:00', '2023-07-21 16:42:14', NULL, 1, 1, 1, '', '{\"2b3c561679bc69d1ebf60136aabca24a.jpeg\":\"pexels-photo-378570.jpeg\",\"46696319e6d3226c10ae69cbad6eb8ca.jpg\":\"277771020_5648948028468601_6018621816321507604_n.jpg\"}', 1, 'f3gjrT49KivGxlXjOppF_z'),
-(18, 'RP202307-018', 'dasdasd', '', '2023-07-28 00:00:00', '2023-07-21 16:44:36', '2023-07-21 16:46:14', 1, 1, 1, '', '{\"7f3555706ef8806374c2e8dc373f68d5.png\":\"GALAXY TAB A8 VS REALME PAD X Which One is Better - YouTube.png\",\"b95a6b2d61d5b2c4469833245cae4b43.pdf\":\"ใบเสนอราคา  คุณแมว แม่ลาว.pdf\"}', 1, 'RP202307-018'),
-(19, 'RP202307-019', 'กฟหกฟหก', '', '2023-07-27 00:00:00', '2023-07-21 16:50:40', NULL, 1, 1, 1, 'กดเกดเเกดเเพ', '{\"807235be0f79b88ee3728b65de5ddca2.png\":\"logo-pbpartner.png\",\"9c51e8d4c27740c7dbbd13d5d65301c3.png\":\"logo-pbchiangmai.png\",\"3e7a50900dc2e957b6eef24d0ead8088.jpg\":\"logo-piya.jpg\",\"c53ef9c077c057b59b261efb4ccbc8d7.png\":\"logo-phulay.png\"}', 1, 'RP202307-019');
+(17, 'RP202307-017', 'EN แก้ Bug En-stock', '', '2023-08-04 00:00:00', '2023-07-21 16:42:14', '2023-07-21 21:41:54', 4, 1, 1, '', '{\"2b3c561679bc69d1ebf60136aabca24a.jpeg\":\"pexels-photo-378570.jpeg\",\"46696319e6d3226c10ae69cbad6eb8ca.jpg\":\"277771020_5648948028468601_6018621816321507604_n.jpg\"}', 2, 'f3gjrT49KivGxlXjOppF_z'),
+(18, 'RP202307-018', 'PD อัพเกรด Notbook คุณยศพร', '', '2023-07-28 00:00:00', '2023-07-21 16:44:36', '2023-07-21 21:42:16', 5, 1, 2, '', '{\"7f3555706ef8806374c2e8dc373f68d5.png\":\"GALAXY TAB A8 VS REALME PAD X Which One is Better - YouTube.png\",\"b95a6b2d61d5b2c4469833245cae4b43.pdf\":\"ใบเสนอราคา  คุณแมว แม่ลาว.pdf\"}', 1, 'RP202307-018'),
+(19, 'RP202307-019', 'EN ตรวจ spec Tablet สำหรับ งาน Stock Barcode', '', '2023-07-27 00:00:00', '2023-07-21 16:50:40', '2023-07-21 21:42:40', 3, 1, 1, 'กดเกดเเกดเเพ', '{\"807235be0f79b88ee3728b65de5ddca2.png\":\"logo-pbpartner.png\",\"9c51e8d4c27740c7dbbd13d5d65301c3.png\":\"logo-pbchiangmai.png\",\"3e7a50900dc2e957b6eef24d0ead8088.jpg\":\"logo-piya.jpg\",\"c53ef9c077c057b59b261efb4ccbc8d7.png\":\"logo-phulay.png\"}', 3, 'RP202307-019'),
+(20, 'RP202307-020', 'EN ติดตั้งโปรแกรมเครื่องใหม่ ยศพนธ์', '', '2023-08-04 00:00:00', '2023-07-21 20:41:29', '2023-07-21 21:43:01', 2, 2, 3, 'adada', '{\"61aed485a4b92c730bdec68c15d3ad6b.jpg\":\"File-100.jpg\"}', 3, 'RP202307-020'),
+(21, 'RP202307-021', 'CEO ทำระบบ Link data Tacking QA<>PD', '', '2023-07-28 00:00:00', '2023-07-21 21:17:16', '2023-07-21 21:43:39', 1, 1, 1, '', '{\"e0bd50c547caf36b6a338b42d335f02b.pdf\":\"ถั่วเหลือง Organic - อุ่มแสง.pdf\"}', 2, 'RP202307-021'),
+(22, 'RP202307-022', 'โทรศัพท์ป้อม รปภ ไม่มีสัญญาณ', '', '2023-08-31 00:00:00', '2023-07-21 21:17:53', '2023-07-21 21:41:10', 3, 1, 3, '', '{\"dc348addb30bc8884a479591c3c9597f.docx\":\"2023-07-04  แบบทดสอบ อบรม 7 WASTE.docx\"}', 1, 'RP202307-022'),
+(23, 'RP202307-023', 'แอร์ห้อง server มีน้ำหยด', '', '2023-07-29 00:00:00', '2023-07-21 21:18:17', '2023-07-21 21:36:18', 6, 1, 1, '', '{\"cd9a7bfd7fac2e4613dc8282b6fc8324.pdf\":\"PKA2023_Ver1_22-Dec-2022_10.00.pdf\"}', 3, 'RP202307-023'),
+(24, 'RP202307-024', 'ขอทำปลั๊กพ่วง 2 ตัว', '', '2023-06-29 00:00:00', '2023-07-21 21:18:40', '2023-07-21 21:36:03', 5, 1, 2, '', '{\"22883dd55a909f4686dc5b612a5faba9.png\":\"trp-sign.png\"}', 4, 'RP202307-024'),
+(25, 'RP202307-025', 'เปลี่ยนกล้องวงจรปิดฝ่ายผลิต', '', '2023-07-04 00:00:00', '2023-07-21 21:35:40', NULL, 1, 1, 1, '', '{\"47ebc6172783dd648bff92655358c4a3.png\":\"trp-sign.png\"}', 1, 'RP202307-025');
 
 -- --------------------------------------------------------
 
@@ -790,7 +796,7 @@ CREATE TABLE `repair_status` (
 --
 
 INSERT INTO `repair_status` (`id`, `code`, `name`, `color`) VALUES
-(1, 'New Request', 'ใหม่', '#F11A7B'),
+(1, 'New Request', 'ใหม่', '#ff0000'),
 (2, 'In Progress', 'กำลังดำเนินการ', '#ff9900'),
 (3, 'Success', 'สำเร็จ', '#1A5D1A'),
 (4, 'Cancel', 'ยกเลิก', '#435B66');
@@ -1038,7 +1044,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `repair`
 --
 ALTER TABLE `repair`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `repairman`
