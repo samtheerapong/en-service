@@ -1,0 +1,77 @@
+@import url("https://use.fontawesome.com/releases/v5.3.1/css/all.css");
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&&family=Kanit&family=Itim&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/sweetalert2@11");
+
+/* font */
+*,
+.panel-title {
+  font-family: "Chakra Petch", sans-serif;
+  /* font-family: 'Kanit', sans-serif; */
+  /* font-family: 'Itim', cursive; */
+}
+
+/* body {
+  background-image: url('https://static.vecteezy.com/system/resources/previews/008/089/962/non_2x/carbon-fiber-texture-with-redial-gradient-background-illustration-vector.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+.help-block{
+    color: red;
+    animation: blink 1s infinite;
+}
+
+.home-link {
+  background-color: #5534a5;
+}
+
+.register-link {
+  background-color: #ff6d60;
+}
+
+.sign-in-link {
+  background-color: #ff3442;
+}
+
+.backend-link {
+  background-color: #C38154;
+}
+
+.report-link {
+  background-color: #0d4c92;
+}
+
+.requester-link {
+  background-color: #00c0ef;
+}
+
+.reviewer-link {
+  background-color: #f39c12;
+}
+
+.approver-link {
+  background-color: #00a65a;
+}
+
+/* ข้อความกระพริบ */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+.blink {
+  animation: blink 1s infinite;
+}
+
+/* ปิด highcharts-credits */
+.highcharts-credits {
+  display: none !important;
+}

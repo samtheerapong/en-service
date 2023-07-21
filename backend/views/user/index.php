@@ -1,0 +1,63 @@
+<?php
+
+use backend\models\User;
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\grid\ActionColumn;
+use yii\grid\GridView;
+
+/** @var yii\web\View $this */
+/** @var backend\models\UserSearch $searchModel */
+/** @var yii\data\ActiveDataProvider $dataProvider */
+
+$this->title = Yii::t('app', 'Users');
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="user-index">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a(Yii::t('app', 'Create User'), ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            'username',
+            [
+                'attribute' => 'thai_name',
+                'label' => 'ชื่อ-สกุล',
+                'format' => 'html',
+                'value' => function ($model) {
+                    return $model->thai_name;
+                }
+            ],
+            [
+                'attribute' => 'status',
+                'label' => 'สถานะ',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return $model->status === 10 ? '<span class="badge" style="background-color:green">ใช้งาน</span>' : '<span class="badge" style="background-color:red">ไม่ใช้งาน</span>';
+                },
+                'filter' => [
+                    10 => 'ใช้งาน',
+                    9 => 'ไม่ใช้งาน',
+                ],
+            ],
+            [
+                'class' => ActionColumn::class,
+                'urlCreator' => function ($action, User $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'id' => $model->id]);
+                }
+            ],
+        ],
+    ]); ?>
+
+
+</div>
