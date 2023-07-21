@@ -2,8 +2,10 @@
 
 use backend\models\User;
 use backend\modules\repair\models\Repair;
+use backend\modules\repair\models\RepairPriority;
 use backend\modules\repair\models\RepairStatus;
 use kartik\widgets\Select2;
+use yii\bootstrap5\LinkPager;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -32,6 +34,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel' => $searchModel,
+                    'pager' => [
+                        'class' => LinkPager::class,
+                        'options' => ['class' => 'pagination justify-content-center'], 
+                        'linkContainerOptions' => ['class' => 'page-item'],
+                        'linkOptions' => ['class' => 'page-link'],
+                    ],
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
 
@@ -41,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'format' => 'html',
                             'options' => ['style' => 'width:140px'],
                             'value' => function ($model) {
-                                return $model->ticket_number;
+                                return Html::a($model->ticket_number, ['view', 'id' => $model->id]);
                             },
                         ],
                         [
@@ -84,22 +92,26 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                        
                         //'updated_by',
-                        //'repair_priority_id',
-                        // [
-                        //     'attribute' => 'location',
-                        //     'format' => 'html',
-                        //     'value' => function ($model) {
-                        //         return $model->location;
-                        //     },
-                        // ],
-                        //'files:ntext',
-                        // [
-                        //     'attribute' => 'repair_status_id',
-                        //     'format' => 'html',
-                        //     'value' => function ($model) {
-                        //         return $model->repair_status_id;
-                        //     },
-                        // ],
+                        [
+                            'attribute' => 'repair_priority_id',
+                            'options' => ['style' => 'width:140px'],
+                            'contentOptions' => ['class' => 'text-center'],
+                            'format' => 'html',
+                            'value' => function ($model) {
+                                $blinkClass = $model->id == 1 ? 'blink' : '';
+                                return '<span class="badge ' . $blinkClass . '" style="background-color:' . $model->repairPriority->color . ';"><b>' . $model->repairPriority->name . '</b></span>';
+                            },
+                            'filter' => Select2::widget([
+                                'model' => $searchModel,
+                                'attribute' => 'repair_priority_id',
+                                'data' => ArrayHelper::map(RepairPriority::find()->all(), 'id', 'name'),
+                                'options' => ['placeholder' => Yii::t('app', 'Select...')],
+                                'language' => 'th',
+                                'pluginOptions' => [
+                                    'allowClear' => true
+                                ],
+                            ])
+                        ],
                         [
                             'attribute' => 'repair_status_id',
                             'options' => ['style' => 'width:140px'],

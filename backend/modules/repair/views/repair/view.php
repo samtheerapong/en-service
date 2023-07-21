@@ -39,20 +39,54 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= DetailView::widget([
                 'model' => $model,
+                'template' => '<tr><th style="width: 250px;">{label}</th><td> {value}</td></tr>',
                 'attributes' => [
                     // 'id',
-                    'ticket_number',
+                    [
+                        'attribute' => 'repair_status_id',
+                        'format' => 'html',
+                        'value' => function ($model) {
+                            $blinkClass = $model->id == 1 ? 'blink' : '';
+                            return '<span class="badge ' . $blinkClass . '" style="background-color:' . $model->repairStatus->color . ';"><b>' . $model->repairStatus->name . '</b></span>';
+                        },
+                    ],
+                    // 'ticket_number',
+                    [
+                        'attribute' => 'ticket_number',
+                        'format' => 'html',
+                        'value' => function ($model) {
+                           
+                            return $model->ticket_number;
+                        },
+                    ],
                     'title',
                     'details:ntext',
-                    'request_date',
-                    'created_at',
-                    'updated_at',
-                    'created_by',
-                    'updated_by',
-                    'repair_priority_id',
+                    // 'updated_at',
+                    // 'created_by',
+                    [
+                        'attribute' => 'created_by',
+                        'format' => 'html',
+                        'options' => ['style' => 'width:180px'],
+                        'value' => function ($model) {
+                            $user = $model->createdBy->thai_name;
+                            return $user ? $model->createdBy->thai_name : $model->createdBy->username;
+                        },
+                    ],
+                    'request_date:date',
+                    'created_at:date',
+                    // 'updated_by',
+                    // 'repair_priority_id',
+                    [
+                        'attribute' => 'repair_priority_id',
+                        'format' => 'html',
+                        'value' => function ($model) {
+                            $blinkClass = $model->id == 2 ? 'blink' : '';
+                            return '<span class="badge ' . $blinkClass . '" style="background-color:' . $model->repairPriority->color . ';"><b>' . $model->repairPriority->name . '</b></span>';
+                        },
+                    ],
                     'location',
                     // 'files:ntext',
-                    'repair_status_id',
+                    // 'repair_status_id',
                     [
                         'attribute' => 'docs',
                         'format' => 'html',
