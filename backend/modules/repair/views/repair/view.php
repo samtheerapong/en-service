@@ -46,8 +46,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'repair_status_id',
                         'format' => 'html',
                         'value' => function ($model) {
-                            $blinkClass = $model->id == 1 ? 'blink' : '';
+                            $blinkClass = $model->repairStatus->id == 1 ? 'blink' : '';
                             return '<span class="badge ' . $blinkClass . '" style="background-color:' . $model->repairStatus->color . ';"><b>' . $model->repairStatus->name . '</b></span>';
+                        },
+                    ],
+                    [
+                        'attribute' => 'repair_priority_id',
+                        'format' => 'html',
+                        'value' => function ($model) {
+                            $blinkClass = $model->repairPriority->id == 2 ? 'blink' : '';
+                            return '<span class="badge ' . $blinkClass . '" style="background-color:' . $model->repairPriority->color . ';"><b>' . $model->repairPriority->name . '</b></span>';
                         },
                     ],
                     // 'ticket_number',
@@ -76,14 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'created_at:date',
                     // 'updated_by',
                     // 'repair_priority_id',
-                    [
-                        'attribute' => 'repair_priority_id',
-                        'format' => 'html',
-                        'value' => function ($model) {
-                            $blinkClass = $model->id == 2 ? 'blink' : '';
-                            return '<span class="badge ' . $blinkClass . '" style="background-color:' . $model->repairPriority->color . ';"><b>' . $model->repairPriority->name . '</b></span>';
-                        },
-                    ],
+                   
                     'location',
                     // 'files:ntext',
                     // 'repair_status_id',

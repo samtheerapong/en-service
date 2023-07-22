@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'filterModel' => $searchModel,
                     'pager' => [
                         'class' => LinkPager::class,
-                        'options' => ['class' => 'pagination justify-content-center'], 
+                        'options' => ['class' => 'pagination justify-content-center'],
                         'linkContainerOptions' => ['class' => 'page-item'],
                         'linkOptions' => ['class' => 'page-link'],
                     ],
@@ -76,8 +76,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             'format' => 'html',
                             'options' => ['style' => 'width:180px'],
                             'value' => function ($model) {
-                                $user = $model->createdBy->thai_name;
-                                return $user ? $model->createdBy->thai_name : $model->createdBy->username;
+                                if ($model->createdBy) {
+                                    return $model->createdBy->thai_name ?? $model->createdBy->username;
+                                }
+                                return null;
                             },
                             'filter' => Select2::widget([
                                 'model' => $searchModel,
@@ -90,7 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ],
                             ])
                         ],
-                       
+
                         //'updated_by',
                         [
                             'attribute' => 'repair_priority_id',
@@ -98,7 +100,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'contentOptions' => ['class' => 'text-center'],
                             'format' => 'html',
                             'value' => function ($model) {
-                                $blinkClass = $model->id == 1 ? 'blink' : '';
+                                $blinkClass = $model->repairPriority->id == 2 ? 'blink' : '';
                                 return '<span class="badge ' . $blinkClass . '" style="background-color:' . $model->repairPriority->color . ';"><b>' . $model->repairPriority->name . '</b></span>';
                             },
                             'filter' => Select2::widget([
@@ -118,7 +120,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'contentOptions' => ['class' => 'text-center'],
                             'format' => 'html',
                             'value' => function ($model) {
-                                $blinkClass = $model->id == 1 ? 'blink' : '';
+                                $blinkClass = $model->repairStatus->id == 1 ? 'blink' : '';
                                 return '<span class="badge ' . $blinkClass . '" style="background-color:' . $model->repairStatus->color . ';"><b>' . $model->repairStatus->name . '</b></span>';
                             },
                             'filter' => Select2::widget([

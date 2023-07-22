@@ -69,6 +69,7 @@ AppAsset::register($this);
                     ['label' => Yii::t('app', 'Permission'), 'url' => ['/admin/permission'],],
                     ['label' => Yii::t('app', 'Route'), 'url' => ['/admin/route'],],
                     ['label' => Yii::t('app', 'Rule'), 'url' => ['/admin/rule'],],
+                    // ['label' => Yii::t('app', 'signup'), 'url' => ['/site/signup'],],
                     
                 ],
             ],
@@ -79,22 +80,41 @@ AppAsset::register($this);
         //     $menuItems[] = ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
         // }
 
+        // echo Nav::widget([
+        //     'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
+        //     'items' => $menuItems,
+        // ]);
+
+        if (Yii::$app->user->isGuest) {
+            $menuItems[] = ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/signup']];
+        }
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
             'items' => $menuItems,
         ]);
         if (Yii::$app->user->isGuest) {
-            echo Html::tag('div', Html::a(Yii::t('app', 'Login'), ['/site/login'], ['class' => ['btn btn-link login text-decoration-none']]), ['class' => ['d-flex']]);
+            echo Html::tag('div',Html::a('Login',['/site/login'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
         } else {
-            $nameToDisplay = Yii::$app->user->identity->thai_name ? Yii::$app->user->identity->thai_name : Yii::$app->user->identity->username;
-
             echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
                 . Html::submitButton(
-                    Yii::t('app', 'Logout') . ' ( ' . $nameToDisplay . ' ) ',
+                    'Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout text-decoration-none']
                 )
                 . Html::endForm();
         }
+
+        // if (Yii::$app->user->isGuest) {
+        //     echo Html::tag('div', Html::a(Yii::t('app', 'Login'), ['/site/login'], ['class' => ['btn btn-link login text-decoration-none']]), ['class' => ['d-flex']]);
+        // } else {
+        //     $nameToDisplay = Yii::$app->user->identity->thai_name ? Yii::$app->user->identity->thai_name : Yii::$app->user->identity->username;
+
+        //     echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
+        //         . Html::submitButton(
+        //             Yii::t('app', 'Logout') . ' ( ' . $nameToDisplay . ' ) ',
+        //             ['class' => 'btn btn-link logout text-decoration-none']
+        //         )
+        //         . Html::endForm();
+        // }
         NavBar::end();
         ?>
     </header>

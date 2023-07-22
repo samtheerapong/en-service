@@ -4,6 +4,18 @@ Changelog V1.0.0
 - New Project
 - Bug fixed ติดตั้งระบบ
 
+
+######################
+#Install
+######################
+```
+git clone https://github.com/samtheerapong/en-service.git
+composer update
+yii migrate/up
+http://localhost/en-service/backend/web/
+```
+
+
 ######################
 Demo Version 
 ######################
@@ -16,6 +28,7 @@ Password: admin123456
 User: demo
 Password: demo123456
 ```
+
 
 ######################
 #ENV
