@@ -41,7 +41,6 @@ class ComposerStaticIniteb634dbb90e44972ca3654b098deb701
         'm' => 
         array (
             'mdm\\autonumber\\' => 15,
-            'mdm\\admin\\' => 10,
         ),
         'k' => 
         array (
@@ -184,10 +183,6 @@ class ComposerStaticIniteb634dbb90e44972ca3654b098deb701
         'mdm\\autonumber\\' => 
         array (
             0 => __DIR__ . '/..' . '/mdmsoft/yii2-autonumber',
-        ),
-        'mdm\\admin\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/mdmsoft/yii2-admin',
         ),
         'kartik\\widgets\\' => 
         array (
@@ -390,8 +385,8 @@ class ComposerStaticIniteb634dbb90e44972ca3654b098deb701
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\EventDispatcher\\' => 
         array (
@@ -443,8 +438,8 @@ class ComposerStaticIniteb634dbb90e44972ca3654b098deb701
         ),
         'Codeception\\' => 
         array (
-            0 => __DIR__ . '/..' . '/codeception/stub/src',
-            1 => __DIR__ . '/..' . '/codeception/codeception/src/Codeception',
+            0 => __DIR__ . '/..' . '/codeception/codeception/src/Codeception',
+            1 => __DIR__ . '/..' . '/codeception/stub/src',
             2 => __DIR__ . '/..' . '/codeception/verify/src/Codeception',
         ),
     );

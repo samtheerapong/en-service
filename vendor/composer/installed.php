@@ -3,7 +3,7 @@
         'name' => 'yiisoft/yii2-app-advanced',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '328fddc0a4df2e8506ed442abc558f06196fa176',
+        'reference' => '4d6bdc97de682658fb232d31c6291887897c76b8',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -480,15 +480,6 @@
             'aliases' => array(
                 0 => '1.0.x-dev',
             ),
-            'dev_requirement' => false,
-        ),
-        'mdmsoft/yii2-admin' => array(
-            'pretty_version' => '2.12',
-            'version' => '2.12.0.0',
-            'reference' => '10e526fbcf6350ed4cc9ba6298f887d611685367',
-            'type' => 'yii2-extension',
-            'install_path' => __DIR__ . '/../mdmsoft/yii2-admin',
-            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'mdmsoft/yii2-autonumber' => array(
@@ -1064,7 +1055,7 @@
         'yiisoft/yii2-app-advanced' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '328fddc0a4df2e8506ed442abc558f06196fa176',
+            'reference' => '4d6bdc97de682658fb232d31c6291887897c76b8',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

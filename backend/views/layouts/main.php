@@ -51,11 +51,25 @@ AppAsset::register($this);
                 ],
             ],
 
+            // [
+            //     'label' => Yii::t('app', 'Users'),
+            //     'items' => [
+            //         ['label' => Yii::t('app', 'User'), 'url' => ['/user'],],
+            //         ['label' => Yii::t('app', 'Admin'), 'url' => ['/admin'],],
+                    
+            //     ],
+            // ],
             [
-                'label' => Yii::t('app', 'Users'),
+                'label' => Yii::t('app', 'User Manage'),
                 'items' => [
-                    ['label' => Yii::t('app', 'User'), 'url' => ['/user'],],
-                    ['label' => Yii::t('app', 'Admin'), 'url' => ['/admin'],],
+                    // ['label' => Yii::t('app', 'User'), 'url' => ['/admin/user'],],
+                    ['label' => Yii::t('app', 'Users'), 'url' => ['/user'],],
+                    ['label' => Yii::t('app', 'Assignment'), 'url' => ['/admin/assignment'],],
+                    ['label' => Yii::t('app', 'Assigned users'), 'url' => ['/admin/role'],],
+                    ['label' => Yii::t('app', 'Permission'), 'url' => ['/admin/permission'],],
+                    ['label' => Yii::t('app', 'Route'), 'url' => ['/admin/route'],],
+                    ['label' => Yii::t('app', 'Rule'), 'url' => ['/admin/rule'],],
+                    
                 ],
             ],
         ];

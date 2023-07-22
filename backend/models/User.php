@@ -54,16 +54,16 @@ class User extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'username' => Yii::t('app', 'Username'),
+            'thai_name' => Yii::t('app', 'Thai Name'),
             'auth_key' => Yii::t('app', 'Auth Key'),
             'password_hash' => Yii::t('app', 'Password Hash'),
             'password_reset_token' => Yii::t('app', 'Password Reset Token'),
             'email' => Yii::t('app', 'Email'),
-            'status' => Yii::t('app', 'Status'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'verification_token' => Yii::t('app', 'Verification Token'),
             'role' => Yii::t('app', 'Role'),
-            'thai_name' => Yii::t('app', 'Thai Name'),
+            'status' => Yii::t('app', 'Status'),
         ];
     }
 }

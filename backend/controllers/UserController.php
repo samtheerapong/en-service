@@ -41,6 +41,10 @@ class UserController extends Controller
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
+        // $dataProvider->pagination = [
+        //     'pageSize' => 20, // Number of items per page
+        // ];
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

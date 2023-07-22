@@ -14,22 +14,25 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
+    'aliases' => [
+        '@mdm/admin' => 'backend/modules/admin',
+    ],
     'modules' => [
         'repair' => [
             'class' => 'backend\modules\repair\Module',
         ],
         'rbac' => 'dektrium\rbac\RbacWebModule',
         'admin' => [
-            'class' => 'mdm\admin\Module',
-            'layout' => 'left-menu'
+            'class' => 'backend\modules\admin\Module',
+            // 'class' => 'mdm\admin\Module',
+            // 'layout' => 'left-menu'
+            // 'layout' => 'main'
         ],
     ],
     'as access' => [
-        'class' => 'mdm\admin\components\AccessControl',
+        'class' => 'backend\modules\admin\components\AccessControl',
         'allowActions' => [
             '*', //Allow All For Dev
-            'site/*',
-            'admin/*',
         ]
     ],
     'components' => [
@@ -80,6 +83,7 @@ return [
                 '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
             ],
         ],
+        
     ],
     'params' => $params,
 ];
