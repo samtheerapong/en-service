@@ -82,7 +82,7 @@ class RepairController extends Controller
         $model = new Repair();
         $model->repair_status_id = 1;
         // $ref = substr(Yii::$app->getSecurity()->generateRandomString(), 10);
-
+        // $model->created_at = Yii::$app->user->identity->id;
 
         if ($model->load(Yii::$app->request->post())) {
             //  Auto Number

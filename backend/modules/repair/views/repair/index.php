@@ -72,25 +72,22 @@ $this->params['breadcrumbs'][] = $this->title;
                         //'created_at',
                         //'updated_at',
                         [
-                            'attribute' => 'created_by',
+                            'attribute' => 'requester_name',
                             'format' => 'html',
                             'options' => ['style' => 'width:180px'],
                             'value' => function ($model) {
-                                if ($model->createdBy) {
-                                    return $model->createdBy->thai_name ?? $model->createdBy->username;
-                                }
-                                return null;
+                                return $model->requester_name;
                             },
-                            'filter' => Select2::widget([
-                                'model' => $searchModel,
-                                'attribute' => 'created_by',
-                                'data' => ArrayHelper::map(User::find()->all(), 'id', 'thai_name'),
-                                'options' => ['placeholder' => Yii::t('app', 'Select...')],
-                                'language' => 'th',
-                                'pluginOptions' => [
-                                    'allowClear' => true
-                                ],
-                            ])
+                            // 'filter' => Select2::widget([
+                            //     'model' => $searchModel,
+                            //     'attribute' => 'requester_name',
+                            //     'data' => ArrayHelper::map(User::find()->all(), 'id', 'thai_name'),
+                            //     'options' => ['placeholder' => Yii::t('app', 'Select...')],
+                            //     'language' => 'th',
+                            //     'pluginOptions' => [
+                            //         'allowClear' => true
+                            //     ],
+                            // ])
                         ],
 
                         //'updated_by',

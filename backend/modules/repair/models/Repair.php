@@ -86,7 +86,7 @@ class Repair extends \yii\db\ActiveRecord
             [['created_at', 'updated_at', 'request_date'], 'safe'],
             [['created_by', 'updated_by', 'repair_priority_id', 'repair_status_id'], 'integer'],
             [['ticket_number', 'location'], 'string', 'max' => 100],
-            [['title','ref'], 'string', 'max' => 255],
+            [['title','ref','requester_name'], 'string', 'max' => 255],
             [['repair_priority_id'], 'exist', 'skipOnError' => true, 'targetClass' => RepairPriority::class, 'targetAttribute' => ['repair_priority_id' => 'id']],
             [['repair_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => RepairStatus::class, 'targetAttribute' => ['repair_status_id' => 'id']],
             [['docs'], 'file', 'maxFiles' => 10, 'skipOnEmpty' => true]
@@ -103,6 +103,7 @@ class Repair extends \yii\db\ActiveRecord
             'ticket_number' => Yii::t('app', 'เลขที่เอกสาร'),
             'title' => Yii::t('app', 'เรื่อง'),
             'details' => Yii::t('app', 'คำอธิบาย'),
+            'requester_name' => Yii::t('app', 'ชื่อผู้แจ้งงาน'),
             'request_date' => Yii::t('app', 'วันที่ร้องขอ'),
             'created_at' => Yii::t('app', 'วันที่แจ้ง'),
             'updated_at' => Yii::t('app', 'ปรับปรุงเมื่อ'),

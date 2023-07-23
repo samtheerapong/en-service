@@ -18,7 +18,7 @@ class RepairSearch extends Repair
     {
         return [
             [['id', 'created_by', 'updated_by', 'repair_priority_id', 'repair_status_id'], 'integer'],
-            [['ticket_number', 'title', 'details', 'request_date', 'created_at', 'updated_at', 'location', 'docs', 'ref'], 'safe'],
+            [['ticket_number', 'title', 'details', 'request_date', 'created_at', 'updated_at', 'location', 'docs', 'ref','requester_name'], 'safe'],
         ];
     }
 
@@ -70,6 +70,7 @@ class RepairSearch extends Repair
         $query->andFilterWhere(['like', 'ticket_number', $this->ticket_number])
             ->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'details', $this->details])
+            ->andFilterWhere(['like', 'requester_name', $this->requester_name])
             ->andFilterWhere(['like', 'request_date', $this->request_date])
             ->andFilterWhere(['like', 'location', $this->location])
             ->andFilterWhere(['like', 'ref', $this->ref])

@@ -7,6 +7,7 @@ use kartik\widgets\Select2;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use backend\models\User;
 
 
 /** @var yii\web\View $this */
@@ -15,7 +16,7 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="repair-form">
-<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <div class="card border-secondary">
         <div class="card-header text-white bg-secondary">
@@ -35,7 +36,20 @@ use yii\widgets\ActiveForm;
                     <?= $form->field($model, 'details')->textarea(['rows' => 3]) ?>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <?= $form->field($model, 'requester_name')->widget(Select2::class, [
+                        'language' => 'th',
+                        'data' => ArrayHelper::map(User::find()->all(), 'thai_name', 'thai_name'),
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ],
+                    ]);
+
+
+                    ?>
+                </div>
+
+                <div class="col-md-3">
                     <?= $form->field($model, 'request_date')->widget(
                         DatePicker::class,
                         [
@@ -53,7 +67,7 @@ use yii\widgets\ActiveForm;
                     ); ?>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <?= $form->field($model, 'repair_priority_id')->widget(Select2::class, [
                         'language' => 'th',
                         'data' => ArrayHelper::map(RepairPriority::find()->all(), 'id', 'name'),
@@ -64,7 +78,7 @@ use yii\widgets\ActiveForm;
                     ?>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <?= $form->field($model, 'location')->textInput(['maxlength' => true]) ?>
                 </div>
 
