@@ -37,7 +37,8 @@ class m230722_064642_create_repair extends Migration
             'ticket_number' => $this->string(100)->defaultValue(null)->comment('เลขที่เอกสาร'),
             'title' => $this->string()->defaultValue(null)->comment('เรื่อง'),
             'details' => $this->text()->comment('คำอธิบาย'),
-            'request_date' => $this->datetime()->defaultValue(null)->comment('วันที่ร้องขอ'),
+            'requester_name' => $this->string(255)->defaultValue(null)->comment('ผู้แจ้งงาน'),
+            'request_date' => $this->date()->defaultValue(null)->comment('วันที่ร้องขอ'),
             'created_at' => $this->datetime()->defaultValue(null)->comment('วันที่แจ้ง'),
             'updated_at' => $this->datetime()->defaultValue(null)->comment('ปรับปรุงเมื่อ'),
             'created_by' => $this->integer()->defaultValue(null)->comment('ผู้แจ้ง'),
@@ -50,13 +51,14 @@ class m230722_064642_create_repair extends Migration
         ], 'ENGINE=InnoDB DEFAULT CHARSET=utf8');
 
         // Insert data into the 'repair' table
-        $this->batchInsert('{{%repair}}', ['id', 'ticket_number', 'title', 'details', 'request_date', 'created_at', 'updated_at', 'created_by', 'updated_by', 'repair_priority_id', 'location', 'docs', 'repair_status_id', 'ref'], [
+        $this->batchInsert('{{%repair}}', ['id', 'ticket_number', 'title', 'details', 'requester_name','request_date', 'created_at', 'updated_at', 'created_by', 'updated_by', 'repair_priority_id', 'location', 'docs', 'repair_status_id', 'ref'], [
             [
                 1,
                 'RP202307-001',
                 'ทดสอบการใช้งาน',
                 '',
-                '2023-08-04 00:00:00',
+                'John Doe',
+                '2023-08-04',
                 '2023-07-21 16:42:14',
                 '2023-07-21 21:41:54',
                 1,

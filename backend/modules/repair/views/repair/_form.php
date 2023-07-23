@@ -40,6 +40,10 @@ use backend\models\User;
                     <?= $form->field($model, 'requester_name')->widget(Select2::class, [
                         'language' => 'th',
                         'data' => ArrayHelper::map(User::find()->all(), 'thai_name', 'thai_name'),
+                        'options' => [
+                            'placeholder' => Yii::t('app', 'Select...'),
+                            // 'required' => true,
+                        ],
                         'pluginOptions' => [
                             'allowClear' => true
                         ],
