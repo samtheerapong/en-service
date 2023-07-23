@@ -72,21 +72,6 @@ class m230722_064642_create_repair extends Migration
             // Add other rows here
         ]);
 
-        // Create the 'repairman' table
-        $this->createTable('{{%repairman}}', [
-            'id' => $this->primaryKey(),
-            'ticket_id' => $this->integer()->defaultValue(null)->comment('ใบแจ้งซ่อม'),
-            'ticket_number' => $this->string(100)->defaultValue(null)->comment('เลขที่ใบแจ้งซ่อม'),
-            'technician_team' => $this->string()->defaultValue(null)->comment('ทีมช่าง'),
-            'repair_start' => $this->datetime()->defaultValue(null)->comment('วันที่เริ่มซ่อม'),
-            'repair_end' => $this->datetime()->defaultValue(null)->comment('วันที่ซ่อมเสร็จ'),
-            'repair_type_id' => $this->integer()->defaultValue(null)->comment('ประเภทการซ่อม'),
-            'spare_part' => $this->text()->comment('รายการอะไหล่'),
-            'cost' => $this->float()->defaultValue(0)->comment('ค่าใช้จ่าย'),
-            'image' => $this->text()->comment('รูปภาพ'),
-            'comment' => $this->text()->comment('ความคิดเห็น'),
-        ], 'ENGINE=InnoDB DEFAULT CHARSET=utf8');
-
         // Create the 'repair_priority' table
         $this->createTable('{{%repair_priority}}', [
             'id' => $this->primaryKey(),
@@ -147,9 +132,6 @@ class m230722_064642_create_repair extends Migration
         
         // Drop the 'repair' table
         $this->dropTable('{{%repair}}');
-
-        // Drop the 'repairman' table
-        $this->dropTable('{{%repairman}}');
 
         // Drop the 'repair_priority' table
         $this->dropTable('{{%repair_priority}}');
