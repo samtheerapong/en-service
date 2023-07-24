@@ -17,7 +17,7 @@ class RepairSearch extends Repair
     public function rules()
     {
         return [
-            [['id', 'created_by', 'updated_by', 'repair_priority_id', 'repair_status_id'], 'integer'],
+            [['id', 'created_by', 'updated_by', 'repair_priority_id', 'repair_status_id','department_id','repair_team_id'], 'integer'],
             [['ticket_number', 'title', 'details', 'request_date', 'created_at', 'updated_at', 'location', 'docs', 'ref','requester_name'], 'safe'],
         ];
     }
@@ -65,6 +65,8 @@ class RepairSearch extends Repair
             'updated_by' => $this->updated_by,
             'repair_priority_id' => $this->repair_priority_id,
             'repair_status_id' => $this->repair_status_id,
+            'department_id' => $this->department_id,
+            'repair_team_id' => $this->repair_team_id,
         ]);
 
         $query->andFilterWhere(['like', 'ticket_number', $this->ticket_number])

@@ -12,25 +12,6 @@ class m230722_064642_create_repair extends Migration
      */
     public function safeUp()
     {
-        $tableOptions = 'ENGINE=InnoDB DEFAULT CHARSET=utf8';
-
-        $this->createTable('{{%auto_number}}', [
-            'group' => $this->string(32)->notNull(),
-            'number' => $this->integer(11),
-            'optimistic_lock' => $this->integer(11),
-            'update_time' => $this->integer(11),
-        ], $tableOptions);
-
-        $this->addPrimaryKey('pk_auto_number', '{{%auto_number}}', 'group');
-
-        // Insert data into the 'auto_number' table
-        $this->insert('{{%auto_number}}', [
-            'group' => 'RP202307-???',
-            'number' => 1,
-            'optimistic_lock' => 1,
-            'update_time' => 1689950140,
-        ]);
-
         // Create the 'repair' table
         $this->createTable('{{%repair}}', [
             'id' => $this->primaryKey(),
@@ -39,6 +20,8 @@ class m230722_064642_create_repair extends Migration
             'details' => $this->text()->comment('คำอธิบาย'),
             'requester_name' => $this->string(255)->defaultValue(null)->comment('ผู้แจ้งงาน'),
             'request_date' => $this->date()->defaultValue(null)->comment('วันที่ร้องขอ'),
+            'department_id' => $this->integer()->defaultValue(null)->comment('จากหน่วยงาน'),
+            'repair_team_id' => $this->integer()->defaultValue(null)->comment('ถึงหน่วยงาน'),
             'created_at' => $this->datetime()->defaultValue(null)->comment('วันที่แจ้ง'),
             'updated_at' => $this->datetime()->defaultValue(null)->comment('ปรับปรุงเมื่อ'),
             'created_by' => $this->integer()->defaultValue(null)->comment('ผู้แจ้ง'),
@@ -51,7 +34,7 @@ class m230722_064642_create_repair extends Migration
         ], 'ENGINE=InnoDB DEFAULT CHARSET=utf8');
 
         // Insert data into the 'repair' table
-        $this->batchInsert('{{%repair}}', ['id', 'ticket_number', 'title', 'details', 'requester_name','request_date', 'created_at', 'updated_at', 'created_by', 'updated_by', 'repair_priority_id', 'location', 'docs', 'repair_status_id', 'ref'], [
+        $this->batchInsert('{{%repair}}', ['id', 'ticket_number', 'title', 'details', 'requester_name','request_date', 'department_id', 'repair_team_id','created_at', 'updated_at', 'created_by', 'updated_by', 'repair_priority_id', 'location', 'docs', 'repair_status_id', 'ref'], [
             [
                 1,
                 'RP202307-001',
@@ -59,15 +42,36 @@ class m230722_064642_create_repair extends Migration
                 '',
                 'John Doe',
                 '2023-08-04',
+                3,
+                2,
                 '2023-07-21 16:42:14',
                 '2023-07-21 21:41:54',
                 1,
                 1,
                 2,
                 '',
-                '{"2b3c561679bc69d1ebf60136aabca24a.jpeg":"pexels-photo-378570.jpeg","46696319e6d3226c10ae69cbad6eb8ca.jpg":"277771020_5648948028468601_6018621816321507604_n.jpg"}',
+                '{"8394ba6634a75ab22708e1b52b69a1fb.jpg":"test.jpg"}',
+                2,
+                'RP202307-001',
+            ],
+            [
+                2,
+                'RP202307-002',
+                'ทดสอบการใช้งาน2',
+                '',
+                'Jane Doe',
+                '2023-08-04',
+                5,
                 1,
-                'f3gjrT49KivGxlXjOppF_z',
+                '2023-07-21 16:42:14',
+                '2023-07-21 21:41:54',
+                1,
+                1,
+                2,
+                '',
+                '{"8b7104df65dc3245a1fc5251be8216b8.jpeg":"pexels-photo-378570.jpeg"}',
+                2,
+                'RP202307-002',
             ],
             // Add other rows here
         ]);
@@ -127,9 +131,6 @@ class m230722_064642_create_repair extends Migration
      */
     public function safeDown()
     {
-        // Drop the 'auto_number' table
-        $this->dropTable('{{%auto_number}}');
-        
         // Drop the 'repair' table
         $this->dropTable('{{%repair}}');
 

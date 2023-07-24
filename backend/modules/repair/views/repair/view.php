@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /** @var backend\modules\repair\models\Repair $model */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Repairs'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Repair'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -71,13 +71,40 @@ $this->params['breadcrumbs'][] = $this->title;
                     'details:ntext',
                     // 'updated_at',
                     // 'created_by',
+                    // [
+                    //     'attribute' => 'created_by',
+                    //     'format' => 'html',
+                    //     'options' => ['style' => 'width:180px'],
+                    //     'value' => function ($model) {
+                    //         $user = $model->createdBy->thai_name;
+                    //         return $user ? $model->createdBy->thai_name : $model->createdBy->username;
+                    //     },
+                    // ],
                     [
-                        'attribute' => 'created_by',
+                        'attribute' => 'requester_name',
                         'format' => 'html',
-                        'options' => ['style' => 'width:180px'],
+                        'options' => ['style' => 'width:150px'],
                         'value' => function ($model) {
-                            $user = $model->createdBy->thai_name;
-                            return $user ? $model->createdBy->thai_name : $model->createdBy->username;
+                            return $model->requester_name;
+                        },
+                    ],
+                    [
+                        'attribute' => 'department_id',
+                        'options' => ['style' => 'width:80px'],
+                        'contentOptions' => ['class' => 'text-center'],
+                        'format' => 'html',
+                        'value' => function ($model) {
+                            return '<span class="badge" style="background-color:' . $model->department->color . ';"><b>' . $model->department->code . '</b></span>';
+                        },
+                    ],
+                    // 'repair_team_id',
+                    [
+                        'attribute' => 'repair_team_id',
+                        'options' => ['style' => 'width:80px'],
+                        'contentOptions' => ['class' => 'text-center'],
+                        'format' => 'html',
+                        'value' => function ($model) {
+                            return '<span class="badge" style="background-color:' . $model->repairTeam->color . ';"><b>' . $model->repairTeam->code . '</b></span>';
                         },
                     ],
                     'request_date:date',

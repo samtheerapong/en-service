@@ -2,7 +2,6 @@
 
 namespace backend\modules\repair\models;
 
-use backend\models\User;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -10,6 +9,11 @@ use yii\db\BaseActiveRecord;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\helpers\Url;
+
+// relationship
+use backend\models\User;
+// use backend\modules\repair\models\Department;
+// use backend\modules\repair\models\RepairTeam;
 
 /**
  * This is the model class for table "repair".
@@ -58,7 +62,7 @@ class Repair extends \yii\db\ActiveRecord
                     BaseActiveRecord::EVENT_BEFORE_UPDATE => ['updated_by'],
                 ],
             ],
-            
+
             // [
             //     'class' => 'mdm\autonumber\Behavior',
             //     'attribute' => 'ticket_number', // required
@@ -82,13 +86,16 @@ class Repair extends \yii\db\ActiveRecord
     {
         return [
             // [['ticket_number'], 'autonumber', 'format' => date('Ym') . '-???'],
+            [['requester_name', 'title','department_id','request_date','repair_team_id','repair_priority_id','repair_status_id'], 'required'],
             [['details', 'docs'], 'string'],
             [['created_at', 'updated_at', 'request_date'], 'safe'],
-            [['created_by', 'updated_by', 'repair_priority_id', 'repair_status_id'], 'integer'],
+            [['created_by', 'updated_by', 'repair_priority_id', 'repair_status_id', 'department_id', 'repair_team_id'], 'integer'],
             [['ticket_number', 'location'], 'string', 'max' => 100],
-            [['title','ref','requester_name'], 'string', 'max' => 255],
+            [['title', 'ref', 'requester_name'], 'string', 'max' => 255],
             [['repair_priority_id'], 'exist', 'skipOnError' => true, 'targetClass' => RepairPriority::class, 'targetAttribute' => ['repair_priority_id' => 'id']],
             [['repair_status_id'], 'exist', 'skipOnError' => true, 'targetClass' => RepairStatus::class, 'targetAttribute' => ['repair_status_id' => 'id']],
+            [['department_id'], 'exist', 'skipOnError' => true, 'targetClass' => Department::class, 'targetAttribute' => ['department_id' => 'id']],
+            [['repair_team_id'], 'exist', 'skipOnError' => true, 'targetClass' => RepairTeam::class, 'targetAttribute' => ['repair_team_id' => 'id']],
             [['docs'], 'file', 'maxFiles' => 10, 'skipOnEmpty' => true]
         ];
     }
@@ -105,6 +112,8 @@ class Repair extends \yii\db\ActiveRecord
             'details' => Yii::t('app', 'คำอธิบาย'),
             'requester_name' => Yii::t('app', 'ชื่อผู้แจ้งงาน'),
             'request_date' => Yii::t('app', 'วันที่ร้องขอ'),
+            'department_id' => Yii::t('app', 'จากหน่วยงาน'),
+            'repair_team_id' => Yii::t('app', 'ถึงหน่วยงาน'),
             'created_at' => Yii::t('app', 'วันที่แจ้ง'),
             'updated_at' => Yii::t('app', 'ปรับปรุงเมื่อ'),
             'created_by' => Yii::t('app', 'ผู้แจ้ง'),
@@ -117,39 +126,10 @@ class Repair extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[RepairPriority]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRepairPriority()
-    {
-        return $this->hasOne(RepairPriority::class, ['id' => 'repair_priority_id']);
-    }
 
-    /**
-     * Gets query for [[RepairStatus]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRepairStatus()
-    {
-        return $this->hasOne(RepairStatus::class, ['id' => 'repair_status_id']);
-    }
-
-    /**
-     * Gets query for [[Repairmen]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRepairmen()
-    {
-        return $this->hasMany(Repairman::class, ['ticket_id' => 'id']);
-    }
 
 
     // ******************** สร้างฟังก์ชั่นเพิ่มเติม ****************************
-
 
     // ฟังก์ชันกำหนด rootPath อัพโหลด
     public static function getUploadPath()
@@ -227,10 +207,41 @@ class Repair extends \yii\db\ActiveRecord
         return $initial;
     }
 
+    // ******************** สร้างฟังก์ชั่นเพิ่มเติม  เชื่อมโยงตาราง relationship****************************
 
+    // hasOne
     public function getCreatedBy()
     {
         return $this->hasOne(User::class, ['id' => 'created_by']);
     }
 
+    // hasOne
+    public function getDepartment()
+    {
+        return $this->hasOne(Department::class, ['id' => 'department_id']);
+    }
+
+    // hasOne
+    public function getRepairTeam()
+    {
+        return $this->hasOne(RepairTeam::class, ['id' => 'repair_team_id']);
+    }
+
+    // hasOne
+    public function getRepairPriority()
+    {
+        return $this->hasOne(RepairPriority::class, ['id' => 'repair_priority_id']);
+    }
+
+    // hasOne
+    public function getRepairStatus()
+    {
+        return $this->hasOne(RepairStatus::class, ['id' => 'repair_status_id']);
+    }
+
+    // hasMany
+    public function getRepairmen()
+    {
+        return $this->hasMany(Repairman::class, ['ticket_id' => 'id']);
+    }
 }

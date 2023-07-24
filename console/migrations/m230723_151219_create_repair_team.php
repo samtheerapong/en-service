@@ -23,8 +23,8 @@ class m230723_151219_create_repair_team extends Migration
 
         // Insert data into the 'repair_priority' table
         $this->batchInsert('{{%repair_team}}', ['id', 'code', 'name', 'color'], [
-            [1, 'EN', 'วิศวกรรม', '#9900ff'],
-            [2, 'IT', 'เทคโนโลยีสารสนเทศ', '#1D5D9B'],
+            [1, 'EN', 'วิศวกรรม', '#862B0D'],
+            [2, 'IT', 'เทคโนโลยีสารสนเทศ', '#4E4FEB'],
         ]);
     }
 

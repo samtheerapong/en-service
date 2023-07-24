@@ -8,7 +8,8 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use backend\models\User;
-
+use backend\modules\repair\models\Department;
+use backend\modules\repair\models\RepairTeam;
 
 /** @var yii\web\View $this */
 /** @var backend\modules\repair\models\Repair $model */
@@ -36,31 +37,29 @@ use backend\models\User;
                     <?= $form->field($model, 'details')->textarea(['rows' => 3]) ?>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <?= $form->field($model, 'requester_name')->widget(Select2::class, [
                         'language' => 'th',
                         'data' => ArrayHelper::map(User::find()->all(), 'thai_name', 'thai_name'),
                         'options' => [
                             'placeholder' => Yii::t('app', 'Select...'),
-                            // 'required' => true,
+                            // 'required' => 'required',
                         ],
                         'pluginOptions' => [
                             'allowClear' => true
                         ],
                     ]);
-
-
                     ?>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <?= $form->field($model, 'request_date')->widget(
                         DatePicker::class,
                         [
                             'language' => 'th',
                             'options' => [
                                 'placeholder' => Yii::t('app', 'Select...'),
-                                'required' => true,
+                                // 'required' => true,
                             ],
                             'pluginOptions' => [
                                 'format' => 'yyyy-mm-dd',
@@ -71,7 +70,43 @@ use backend\models\User;
                     ); ?>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
+                    <?= $form->field($model, 'location')->textInput(['maxlength' => true]) ?>
+                </div>
+
+                <div class="col-md-4">
+                    <?= $form->field($model, 'department_id')->widget(Select2::class, [
+                        'language' => 'th',
+                        'data' => ArrayHelper::map(Department::find()->all(), 'id', 'name'),
+                        'options' => [
+                            'placeholder' => Yii::t('app', 'Select...'),
+                            // 'required' => true,
+                        ],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ],
+                    ]);
+                    ?>
+                </div>
+
+                <div class="col-md-4">
+                    <?= $form->field($model, 'repair_team_id')->widget(Select2::class, [
+                        'language' => 'th',
+                        'data' => ArrayHelper::map(RepairTeam::find()->all(), 'id', 'name'),
+                        'options' => [
+                            'placeholder' => Yii::t('app', 'Select...'),
+                            // 'required' => true,
+                        ],
+                        'pluginOptions' => [
+                            'allowClear' => true
+                        ],
+                    ]);
+                    ?>
+                </div>
+
+
+
+                <div class="col-md-4">
                     <?= $form->field($model, 'repair_priority_id')->widget(Select2::class, [
                         'language' => 'th',
                         'data' => ArrayHelper::map(RepairPriority::find()->all(), 'id', 'name'),
@@ -81,11 +116,6 @@ use backend\models\User;
                     ]);
                     ?>
                 </div>
-
-                <div class="col-md-3">
-                    <?= $form->field($model, 'location')->textInput(['maxlength' => true]) ?>
-                </div>
-
                 <div class="col-md-12">
                     <?= $form->field($model, 'docs[]')->widget(FileInput::class, [
                         'options' => [

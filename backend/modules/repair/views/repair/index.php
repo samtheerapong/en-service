@@ -1,9 +1,11 @@
 <?php
 
 use backend\models\User;
+use backend\modules\repair\models\Department;
 use backend\modules\repair\models\Repair;
 use backend\modules\repair\models\RepairPriority;
 use backend\modules\repair\models\RepairStatus;
+use backend\modules\repair\models\RepairTeam;
 use kartik\widgets\Select2;
 use yii\bootstrap5\LinkPager;
 use yii\helpers\Html;
@@ -63,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute' => 'title',
                             'format' => 'html',
-                            'options' => ['style' => 'width:300'],
+                            'options' => ['style' => 'width:auto'],
                             'value' => function ($model) {
                                 return $model->title;
                             },
@@ -74,26 +76,55 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute' => 'requester_name',
                             'format' => 'html',
-                            'options' => ['style' => 'width:180px'],
+                            'options' => ['style' => 'width:150px'],
                             'value' => function ($model) {
                                 return $model->requester_name;
                             },
-                            // 'filter' => Select2::widget([
-                            //     'model' => $searchModel,
-                            //     'attribute' => 'requester_name',
-                            //     'data' => ArrayHelper::map(User::find()->all(), 'id', 'thai_name'),
-                            //     'options' => ['placeholder' => Yii::t('app', 'Select...')],
-                            //     'language' => 'th',
-                            //     'pluginOptions' => [
-                            //         'allowClear' => true
-                            //     ],
-                            // ])
                         ],
-
+                        // 'department_id',
+                        [
+                            'attribute' => 'department_id',
+                            'options' => ['style' => 'width:80px'],
+                            'contentOptions' => ['class' => 'text-center'],
+                            'format' => 'html',
+                            'value' => function ($model) {
+                                return '<span class="badge" style="background-color:' . $model->department->color . ';"><b>' . $model->department->code . '</b></span>';
+                            },
+                            'filter' => Select2::widget([
+                                'model' => $searchModel,
+                                'attribute' => 'department_id',
+                                'data' => ArrayHelper::map(Department::find()->all(), 'id', 'code'),
+                                'options' => ['placeholder' => Yii::t('app', 'Select...')],
+                                'language' => 'th',
+                                'pluginOptions' => [
+                                    'allowClear' => true
+                                ],
+                            ])
+                        ],
+                        // 'repair_team_id',
+                        [
+                            'attribute' => 'repair_team_id',
+                            'options' => ['style' => 'width:80px'],
+                            'contentOptions' => ['class' => 'text-center'],
+                            'format' => 'html',
+                            'value' => function ($model) {
+                                return '<span class="badge" style="background-color:' . $model->repairTeam->color . ';"><b>' . $model->repairTeam->code . '</b></span>';
+                            },
+                            'filter' => Select2::widget([
+                                'model' => $searchModel,
+                                'attribute' => 'repair_team_id',
+                                'data' => ArrayHelper::map(RepairTeam::find()->all(), 'id', 'code'),
+                                'options' => ['placeholder' => Yii::t('app', 'Select...')],
+                                'language' => 'th',
+                                'pluginOptions' => [
+                                    'allowClear' => true
+                                ],
+                            ])
+                        ],
                         //'updated_by',
                         [
                             'attribute' => 'repair_priority_id',
-                            'options' => ['style' => 'width:140px'],
+                            'options' => ['style' => 'width:100px'],
                             'contentOptions' => ['class' => 'text-center'],
                             'format' => 'html',
                             'value' => function ($model) {
@@ -113,7 +144,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                         [
                             'attribute' => 'repair_status_id',
-                            'options' => ['style' => 'width:140px'],
+                            'options' => ['style' => 'width:100px'],
                             'contentOptions' => ['class' => 'text-center'],
                             'format' => 'html',
                             'value' => function ($model) {
@@ -134,7 +165,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'class' => ActionColumn::class,
                             'header' => 'จัดการ',
-                            'headerOptions' => ['style' => 'width: 140px;'],
+                            'headerOptions' => ['style' => 'width: 120px;'],
                             'buttonOptions' => ['class' => 'btn btn-sm btn-outline-primary btn-group'],
                             'urlCreator' => function ($action, Repair $model, $key, $index, $column) {
                                 return Url::toRoute([$action, 'id' => $model->id]);
