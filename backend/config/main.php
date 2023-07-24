@@ -18,9 +18,6 @@ return [
         '@mdm/admin' => 'backend/modules/admin',
     ],
     'modules' => [
-        'uploads' => [
-            'class' => 'backend\modules\uploads\Module',
-        ],
         'repair' => [
             'class' => 'backend\modules\repair\Module',
         ],
@@ -48,7 +45,7 @@ return [
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
         'image' => [
-            'class' => 'yii\image\ImageDriver',
+            'class' => 'yii\image\ImageDriver', // "yurkinx/yii2-image": "dev-master",
             'driver' => 'GD',  //GD or Imagick
         ],
         'session' => [
