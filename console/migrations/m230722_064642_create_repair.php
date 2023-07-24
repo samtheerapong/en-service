@@ -34,45 +34,9 @@ class m230722_064642_create_repair extends Migration
         ], 'ENGINE=InnoDB DEFAULT CHARSET=utf8');
 
         // Insert data into the 'repair' table
-        $this->batchInsert('{{%repair}}', ['id', 'ticket_number', 'title', 'details', 'requester_name','request_date', 'department_id', 'repair_team_id','created_at', 'updated_at', 'created_by', 'updated_by', 'repair_priority_id', 'location', 'docs', 'repair_status_id', 'ref'], [
-            [
-                1,
-                'RP202307-001',
-                'ทดสอบการใช้งาน',
-                '',
-                'John Doe',
-                '2023-08-04',
-                3,
-                2,
-                '2023-07-21 16:42:14',
-                '2023-07-21 21:41:54',
-                1,
-                1,
-                2,
-                '',
-                '{"8394ba6634a75ab22708e1b52b69a1fb.jpg":"test.jpg"}',
-                2,
-                'RP202307-001',
-            ],
-            [
-                2,
-                'RP202307-002',
-                'ทดสอบการใช้งาน2',
-                '',
-                'Jane Doe',
-                '2023-08-04',
-                5,
-                1,
-                '2023-07-21 16:42:14',
-                '2023-07-21 21:41:54',
-                1,
-                1,
-                2,
-                '',
-                '{"8b7104df65dc3245a1fc5251be8216b8.jpeg":"pexels-photo-378570.jpeg"}',
-                2,
-                'RP202307-002',
-            ],
+        $this->batchInsert('{{%repair}}', ['id', 'ticket_number', 'title', 'requester_name', 'request_date', 'department_id', 'repair_team_id', 'created_at', 'updated_at', 'created_by', 'updated_by', 'repair_priority_id', 'location', 'docs', 'repair_status_id', 'ref'], [
+            [1, 'RP202307-001', 'ทดสอบการใช้งาน 1', 'John Doe', '2023-08-01', 3, 2, '2023-07-01 12:00:00', '2023-07-21 12:00:00', 1, 1, 2, 'B1', '{"8394ba6634a75ab22708e1b52b69a1fb.jpg":"test.jpg"}', 2, 'RP202307-001',],
+            [2, 'RP202307-002', 'ทดสอบการใช้งาน 2', 'Jane Doe', '2023-08-01', 5, 1, '2023-07-01 12:00:00', '2023-07-21 12:00:00', 1, 1, 2, 'B2', '{"8b7104df65dc3245a1fc5251be8216b8.jpeg":"pexels-photo-378570.jpeg"}', 2, 'RP202307-002',],
             // Add other rows here
         ]);
 
@@ -124,6 +88,20 @@ class m230722_064642_create_repair extends Migration
             [5, 'Install', 'ติดตั้ง', '#3c78d8'],
             [6, 'Move', 'โยกย้าย', '#e69138'],
         ]);
+
+        // Create the 'repair_team' table
+        $this->createTable('{{%repair_team}}', [
+            'id' => $this->primaryKey(),
+            'code' => $this->string(45)->unique()->comment('รหัส'),
+            'name' => $this->string(100)->defaultValue(null)->comment('ชื่อ'),
+            'color' => $this->string(45)->defaultValue(null)->comment('สี'),
+        ],  'ENGINE=InnoDB DEFAULT CHARSET=utf8');
+
+        // Insert data into the 'repair_team' table
+        $this->batchInsert('{{%repair_team}}', ['id', 'code', 'name', 'color'], [
+            [1, 'EN', 'วิศวกรรม', '#862B0D'],
+            [2, 'IT', 'เทคโนโลยีสารสนเทศ', '#4E4FEB'],
+        ]);
     }
 
     /**
@@ -142,5 +120,8 @@ class m230722_064642_create_repair extends Migration
 
         // Drop the 'repair_type' table
         $this->dropTable('{{%repair_type}}');
+
+        // Drop the 'repair_team' table
+        $this->dropTable('{{%repair_team}}');
     }
 }

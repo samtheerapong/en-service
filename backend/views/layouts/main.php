@@ -43,11 +43,17 @@ AppAsset::register($this);
                 'url' => ['/repair/repair/index'],
             ],
             [
+                'label' => Yii::t('app', 'Photo-Library'),
+                'url' => ['/photo-library/index'],
+            ],
+            [
                 'label' => Yii::t('app', 'Systems'),
                 'items' => [
                     ['label' => Yii::t('app', 'Repair Priority'), 'url' => ['/repair/repair-priority/index']],
                     ['label' => Yii::t('app', 'Repair Status'), 'url' => ['/repair/repair-status/index']],
                     ['label' => Yii::t('app', 'Repair Type'), 'url' => ['/repair/repair-type/index']],
+                    ['label' => Yii::t('app', 'Repair Team'), 'url' => ['/repair/repair-team/index']],
+                    ['label' => Yii::t('app', 'Department'), 'url' => ['/repair/department/index']],
                 ],
             ],
 

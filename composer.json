@@ -24,6 +24,8 @@
         "mdmsoft/yii2-autonumber": "*",
         "yii2mod/yii2-sweet-alert": "*",
         "kartik-v/yii2-icons": "^1.4",
+        "2amigos/yii2-gallery-widget" : "*",
+        "yurkinx/yii2-image": "dev-master",
         "dektrium/yii2-rbac": "1.0.0-alpha@dev"
     },
     "require-dev": {

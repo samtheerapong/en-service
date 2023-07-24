@@ -86,7 +86,7 @@ class Repair extends \yii\db\ActiveRecord
     {
         return [
             // [['ticket_number'], 'autonumber', 'format' => date('Ym') . '-???'],
-            [['requester_name', 'title','department_id','request_date','repair_team_id','repair_priority_id','repair_status_id'], 'required'],
+            [['requester_name', 'title', 'department_id', 'request_date', 'repair_team_id', 'repair_priority_id', 'repair_status_id'], 'required'],
             [['details', 'docs'], 'string'],
             [['created_at', 'updated_at', 'request_date'], 'safe'],
             [['created_by', 'updated_by', 'repair_priority_id', 'repair_status_id', 'department_id', 'repair_team_id'], 'integer'],
@@ -153,10 +153,12 @@ class Repair extends \yii\db\ActiveRecord
                 $docs_file = '<ul>';
                 foreach ($files as $key => $value) {
                     if (strpos($value, '.jpg') !== false || strpos($value, '.jpeg') !== false || strpos($value, '.png') !== false || strpos($value, '.gif') !== false) {
-                        $thumbnail = Html::img(['/repair/repair/download', 'id' => $this->id, 'file' => $key, 'fullname' => $value], ['class' => 'img-thumbnail', 'alt' => 'Image', 'style' => 'width: 150px']);
-                        $fullSize = Html::a($thumbnail, ['/repair/repair/download', 'id' => $this->id, 'file' => $key, 'fullname' => $value], ['target' => '_blank']);
-                        $docs_file .= '<li>' . $fullSize . '</li>';
+                        // Images
+                        $showThumbnail = Html::img(['/repair/repair/download', 'id' => $this->id, 'file' => $key, 'fullname' => $value], ['class' => 'img-thumbnail', 'alt' => 'Image', 'style' => 'width: 250px']);
+                        $downloadImg = Html::a($showThumbnail, ['/repair/repair/download', 'id' => $this->id, 'file' => $key, 'fullname' => $value], ['target' => '_blank']);
+                        $docs_file .= '<li>' . $downloadImg . '</li>';
                     } else {
+                        // documents
                         $docs_file .= '<li>' . Html::a($value, ['/repair/repair/download', 'id' => $this->id, 'file' => $key, 'fullname' => $value]) . '</li>';
                     }
                 }
@@ -206,6 +208,7 @@ class Repair extends \yii\db\ActiveRecord
         }
         return $initial;
     }
+
 
     // ******************** สร้างฟังก์ชั่นเพิ่มเติม  เชื่อมโยงตาราง relationship****************************
 

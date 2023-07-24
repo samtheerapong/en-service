@@ -276,4 +276,22 @@ return array (
       '@yii/symfonymailer' => $vendorDir . '/yiisoft/yii2-symfonymailer/src',
     ),
   ),
+  '2amigos/yii2-gallery-widget' => 
+  array (
+    'name' => '2amigos/yii2-gallery-widget',
+    'version' => '1.1.0.0',
+    'alias' => 
+    array (
+      '@dosamigos/gallery' => $vendorDir . '/2amigos/yii2-gallery-widget/src',
+    ),
+  ),
+  'yurkinx/yii2-image' => 
+  array (
+    'name' => 'yurkinx/yii2-image',
+    'version' => 'dev-master',
+    'alias' => 
+    array (
+      '@yii/image' => $vendorDir . '/yurkinx/yii2-image/yii/image',
+    ),
+  ),
 );

@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'ticket_number',
                         'format' => 'html',
                         'value' => function ($model) {
-                           
+
                             return $model->ticket_number;
                         },
                     ],
@@ -111,7 +111,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'created_at:date',
                     // 'updated_by',
                     // 'repair_priority_id',
-                   
+
                     'location',
                     // 'files:ntext',
                     // 'repair_status_id',
@@ -127,3 +127,10 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+
+
+
+
+
+
+

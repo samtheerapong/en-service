@@ -74,6 +74,7 @@ class ComposerStaticIniteb634dbb90e44972ca3654b098deb701
         ),
         'd' => 
         array (
+            'dosamigos\\gallery\\' => 18,
             'dektrium\\rbac\\' => 14,
         ),
         'c' => 
@@ -281,6 +282,10 @@ class ComposerStaticIniteb634dbb90e44972ca3654b098deb701
             0 => __DIR__ . '/../..' . '/frontend/tests',
             1 => __DIR__ . '/../..' . '/frontend/tests/_support',
         ),
+        'dosamigos\\gallery\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/2amigos/yii2-gallery-widget/src',
+        ),
         'dektrium\\rbac\\' => 
         array (
             0 => __DIR__ . '/..' . '/dektrium/yii2-rbac',
@@ -445,6 +450,13 @@ class ComposerStaticIniteb634dbb90e44972ca3654b098deb701
     );
 
     public static $prefixesPsr0 = array (
+        'y' => 
+        array (
+            'yii\\image\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/yurkinx/yii2-image',
+            ),
+        ),
         'H' => 
         array (
             'HTMLPurifier' => 

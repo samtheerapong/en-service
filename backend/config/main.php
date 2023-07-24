@@ -18,6 +18,9 @@ return [
         '@mdm/admin' => 'backend/modules/admin',
     ],
     'modules' => [
+        'uploads' => [
+            'class' => 'backend\modules\uploads\Module',
+        ],
         'repair' => [
             'class' => 'backend\modules\repair\Module',
         ],
@@ -43,6 +46,10 @@ return [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+        ],
+        'image' => [
+            'class' => 'yii\image\ImageDriver',
+            'driver' => 'GD',  //GD or Imagick
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend

@@ -40,6 +40,7 @@ return array(
     'kartik\\alert\\' => array($vendorDir . '/kartik-v/yii2-widget-alert/src'),
     'kartik\\affix\\' => array($vendorDir . '/kartik-v/yii2-widget-affix'),
     'frontend\\tests\\' => array($baseDir . '/frontend/tests', $baseDir . '/frontend/tests/_support'),
+    'dosamigos\\gallery\\' => array($vendorDir . '/2amigos/yii2-gallery-widget/src'),
     'dektrium\\rbac\\' => array($vendorDir . '/dektrium/yii2-rbac'),
     'common\\tests\\' => array($baseDir . '/common/tests', $baseDir . '/common/tests/_support'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
