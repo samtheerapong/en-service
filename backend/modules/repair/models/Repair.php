@@ -175,6 +175,9 @@ class Repair extends \yii\db\ActiveRecord
         return @is_array(getimagesize($filePath)) ? true : false;
     }
 
+
+
+
     // ฟังก์ชัน initialPreview
     public function initialPreview($data, $field, $type = 'file')
     {

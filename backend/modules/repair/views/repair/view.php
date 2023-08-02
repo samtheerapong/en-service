@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+use dosamigos\gallery\Gallery;
+
 /** @var yii\web\View $this */
 /** @var backend\modules\repair\models\Repair $model */
 
@@ -124,13 +126,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ]) ?>
 
 
+
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
