@@ -45,7 +45,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         ['class' => 'yii\grid\SerialColumn'],
 
                         // 'id',
-                        'work_number',
+                        // 'work_number',
+                        [
+                            'attribute' => 'work_number',
+                            'options' => ['style' => 'width:160px'],
+                            'contentOptions' => ['class' => 'text-center'],
+                            'format' => 'html',
+                            'value' => function ($model) {
+                                return $model->work_number;
+                            },
+                        ],
                         // 'priority_id',
                         [
                             'attribute' => 'priority_id',
@@ -148,3 +157,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
             </div>
+        </div>
+    </div>
+</div>

@@ -9,7 +9,7 @@ use yii2mod\alert\AlertAsset;
 use yii2mod\alert\Alert;
 
 AppAsset::register($this);
-AlertAsset::register($this);
+// AlertAsset::register($this);
 
 \hail812\adminlte3\assets\FontAwesomeAsset::register($this);
 \hail812\adminlte3\assets\AdminLteAsset::register($this);

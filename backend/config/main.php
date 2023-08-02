@@ -42,13 +42,13 @@ return [
         ]
     ],
     'components' => [
-    //     'view' => [
-    //         'theme' => [
-    //             'pathMap' => [
-    //                '@app/views' => '@common/themes/adminlte3'
-    //             ],
-    //         ],
-    //    ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                   '@app/views' => '@common/themes/adminlte3'
+                ],
+            ],
+       ],
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
