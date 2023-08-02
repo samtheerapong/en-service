@@ -9,7 +9,9 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
-
+// use yii2mod\alert\Alert;
+use common\widgets\sweetalert\SweetAlertAsset;
+SweetAlertAsset::register($this);
 
 AppAsset::register($this);
 ?>
@@ -130,7 +132,9 @@ AppAsset::register($this);
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
-            <?= Alert::widget() ?>
+            <?php echo Alert::widget() ?>
+           
+            
             <?= $content ?>
         </div>
     </main>

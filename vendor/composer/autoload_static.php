@@ -13,8 +13,8 @@ class ComposerStaticIniteb634dbb90e44972ca3654b098deb701
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
+        'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
@@ -35,6 +35,7 @@ class ComposerStaticIniteb634dbb90e44972ca3654b098deb701
             'yii\\debug\\' => 10,
             'yii\\composer\\' => 13,
             'yii\\bootstrap5\\' => 15,
+            'yii\\bootstrap4\\' => 15,
             'yii\\' => 4,
             'yii2mod\\alert\\' => 14,
         ),
@@ -67,6 +68,11 @@ class ComposerStaticIniteb634dbb90e44972ca3654b098deb701
             'kartik\\base\\' => 12,
             'kartik\\alert\\' => 13,
             'kartik\\affix\\' => 13,
+        ),
+        'h' => 
+        array (
+            'hail812\\adminlte\\widgets\\' => 25,
+            'hail812\\adminlte3\\' => 18,
         ),
         'f' => 
         array (
@@ -173,6 +179,10 @@ class ComposerStaticIniteb634dbb90e44972ca3654b098deb701
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-bootstrap5/src',
         ),
+        'yii\\bootstrap4\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-bootstrap4/src',
+        ),
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
@@ -276,6 +286,14 @@ class ComposerStaticIniteb634dbb90e44972ca3654b098deb701
         'kartik\\affix\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-affix',
+        ),
+        'hail812\\adminlte\\widgets\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hail812/yii2-adminlte-widgets/src',
+        ),
+        'hail812\\adminlte3\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hail812/yii2-adminlte3/src',
         ),
         'frontend\\tests\\' => 
         array (

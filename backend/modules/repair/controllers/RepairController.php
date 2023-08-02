@@ -98,8 +98,10 @@ class RepairController extends Controller
 
             if ($model->save()) {
 
-
-                Yii::$app->session->setFlash('success', Yii::t('app', 'Created Successfully'));
+                Yii::$app->session->setFlash(
+                    'success',
+                    'สำเร็จ'
+                ); 
 
                 return $this->redirect(['view', 'id' => $model->id]);
             }

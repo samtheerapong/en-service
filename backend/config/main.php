@@ -18,6 +18,9 @@ return [
         '@mdm/admin' => 'backend/modules/admin',
     ],
     'modules' => [
+        'docs' => [
+            'class' => 'backend\modules\docs\Module',
+        ],
         'repair' => [
             'class' => 'backend\modules\repair\Module',
         ],
@@ -36,6 +39,13 @@ return [
         ]
     ],
     'components' => [
+    //     'view' => [
+    //         'theme' => [
+    //             'pathMap' => [
+    //                '@app/views' => '@common/themes/adminlte3'
+    //             ],
+    //         ],
+    //    ],
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
@@ -87,7 +97,7 @@ return [
                 '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
             ],
         ],
-        
+
     ],
     'params' => $params,
 ];

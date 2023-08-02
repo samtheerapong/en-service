@@ -221,15 +221,6 @@ return array (
     ),
     'bootstrap' => 'mdm\\autonumber\\Bootstrap',
   ),
-  'yii2mod/yii2-sweet-alert' => 
-  array (
-    'name' => 'yii2mod/yii2-sweet-alert',
-    'version' => '1.0.1.0',
-    'alias' => 
-    array (
-      '@yii2mod/alert' => $vendorDir . '/yii2mod/yii2-sweet-alert',
-    ),
-  ),
   'yiisoft/yii2-bootstrap5' => 
   array (
     'name' => 'yiisoft/yii2-bootstrap5',
@@ -292,6 +283,42 @@ return array (
     'alias' => 
     array (
       '@yii/image' => $vendorDir . '/yurkinx/yii2-image/yii/image',
+    ),
+  ),
+  'hail812/yii2-adminlte-widgets' => 
+  array (
+    'name' => 'hail812/yii2-adminlte-widgets',
+    'version' => '1.0.5.0',
+    'alias' => 
+    array (
+      '@hail812/adminlte/widgets' => $vendorDir . '/hail812/yii2-adminlte-widgets/src',
+    ),
+  ),
+  'yiisoft/yii2-bootstrap4' => 
+  array (
+    'name' => 'yiisoft/yii2-bootstrap4',
+    'version' => '2.0.11.0',
+    'alias' => 
+    array (
+      '@yii/bootstrap4' => $vendorDir . '/yiisoft/yii2-bootstrap4/src',
+    ),
+  ),
+  'hail812/yii2-adminlte3' => 
+  array (
+    'name' => 'hail812/yii2-adminlte3',
+    'version' => '1.1.8.0',
+    'alias' => 
+    array (
+      '@hail812/adminlte3' => $vendorDir . '/hail812/yii2-adminlte3/src',
+    ),
+  ),
+  'yii2mod/yii2-sweet-alert' => 
+  array (
+    'name' => 'yii2mod/yii2-sweet-alert',
+    'version' => '1.0.1.0',
+    'alias' => 
+    array (
+      '@yii2mod/alert' => $vendorDir . '/yii2mod/yii2-sweet-alert',
     ),
   ),
 );

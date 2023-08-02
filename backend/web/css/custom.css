@@ -1,6 +1,8 @@
+@import url("https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css");
+@import url("https://cdn.jsdelivr.net/npm/sweetalert2@11");
 @import url("https://use.fontawesome.com/releases/v5.3.1/css/all.css");
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&&family=Kanit&family=Itim&display=swap");
-@import url("https://cdn.jsdelivr.net/npm/sweetalert2@11");
+
 
 /* font */
 *,
