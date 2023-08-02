@@ -18,6 +18,9 @@ return [
         '@mdm/admin' => 'backend/modules/admin',
     ],
     'modules' => [
+        'itwork' => [
+            'class' => 'backend\modules\itwork\Module',
+        ],
         'docs' => [
             'class' => 'backend\modules\docs\Module',
         ],

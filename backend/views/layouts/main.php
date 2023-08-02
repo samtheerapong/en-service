@@ -45,6 +45,16 @@ AppAsset::register($this);
                 'url' => ['/repair/repair/index'],
             ],
             [
+                'label' => Yii::t('app', 'IT Works'),
+                'items' => [
+                    ['label' => Yii::t('app', 'Work record'), 'url' => ['/itwork/work-record/index']],
+                    ['label' => Yii::t('app', 'Work group'), 'url' => ['/itwork/work-group/index']],
+                    ['label' => Yii::t('app', 'Work priority'), 'url' => ['/itwork/work-priority/index']],
+                    ['label' => Yii::t('app', 'Work type'), 'url' => ['/itwork/work-type/index']],
+                    ['label' => Yii::t('app', 'Work status'), 'url' => ['/itwork/work-status/index']],
+                ],
+            ],
+            [
                 'label' => Yii::t('app', 'Photo-Library'),
                 'url' => ['/photo-library/index'],
             ],
